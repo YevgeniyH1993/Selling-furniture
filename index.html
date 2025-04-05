@@ -142,7 +142,6 @@
             color: #ffd700;
             font-style: italic;
             margin-top: 10px;
-            display: none;
         }
 
         .fallback-link {
@@ -177,17 +176,12 @@
             <p>Explore this awesome Tableau visualization below! Zoom, filter, and interact to uncover trends in furniture sales. 🕵️‍♂️</p>
             <div class="tableau-container" id="tableauContainer">
                 <iframe 
-                    src="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" 
+                    src="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" 
                     allowfullscreen 
                     id="tableauIframe">
                 </iframe>
             </div>
-            <p class="fallback-message" id="fallbackMessage">
-                If the dashboard doesn’t load, 
-                <a href="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" class="fallback-link" target="_blank">
-                    click here to view it directly on Tableau Public
-                </a>! 🌈
-            </p>
+            <p class="fallback-message">If the dashboard doesn’t load, <a href="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" class="fallback-link" target="_blank">click here to view it directly on Tableau Public</a>! 🌈</p>
             <a href="#" class="explore-btn">Explore More Dashboards 🌈</a>
         </div>
 
@@ -212,7 +206,6 @@
     </div>
 
     <script>
-        // Smooth Scroll for Navigation
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -221,7 +214,6 @@
             });
         });
 
-        // Button Animation
         const btn = document.querySelector('.explore-btn');
         btn.addEventListener('mouseover', () => {
             btn.style.background = 'linear-gradient(45deg, #ffd700, #ff6b6b)';
@@ -230,22 +222,22 @@
             btn.style.background = 'linear-gradient(45deg, #ff6b6b, #ffd700)';
         });
 
-        // Check if Tableau iframe loads
         window.onload = () => {
-            const iframe = document.getElementById('tableauIframe');
-            const fallback = document.getElementById('fallbackMessage');
-
-            let iframeLoaded = false;
-
-            iframe.onload = () => {
-                iframeLoaded = true;
-            };
-
             setTimeout(() => {
-                if (!iframeLoaded) {
-                    fallback.style.display = 'block';
-                }
-            }, 5000);
+                alert('Welcome to the Data Analytics Hub! Enjoy exploring! 🎉');
+                const iframe = document.getElementById('tableauIframe');
+                const fallbackMessage = document.querySelector('.fallback-message');
+
+                iframe.addEventListener('error', () => {
+                    fallbackMessage.style.display = 'block';
+                });
+
+                setTimeout(() => {
+                    if (!iframe.contentDocument || iframe.contentDocument.body.innerHTML === '') {
+                        fallbackMessage.style.display = 'block';
+                    }
+                }, 5000);
+            }, 1000);
         };
     </script>
 </body>

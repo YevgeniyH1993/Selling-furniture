@@ -72,7 +72,7 @@
 
         .tableau-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             background: #fff;
@@ -142,6 +142,7 @@
             color: #ffd700;
             font-style: italic;
             margin-top: 10px;
+            display: none;
         }
 
         .fallback-link {
@@ -181,7 +182,12 @@
                     id="tableauIframe">
                 </iframe>
             </div>
-            <p class="fallback-message">If the dashboard doesn’t load, <a href="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" class="fallback-link" target="_blank">click here to view it directly on Tableau Public</a>! 🌈</p>
+            <p class="fallback-message" id="fallbackMessage">
+                If the dashboard doesn’t load, 
+                <a href="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" class="fallback-link" target="_blank">
+                    click here to view it directly on Tableau Public
+                </a>! 🌈
+            </p>
             <a href="#" class="explore-btn">Explore More Dashboards 🌈</a>
         </div>
 
@@ -226,22 +232,20 @@
 
         // Check if Tableau iframe loads
         window.onload = () => {
+            const iframe = document.getElementById('tableauIframe');
+            const fallback = document.getElementById('fallbackMessage');
+
+            let iframeLoaded = false;
+
+            iframe.onload = () => {
+                iframeLoaded = true;
+            };
+
             setTimeout(() => {
-                alert('Welcome to the Data Analytics Hub! Enjoy exploring! 🎉');
-                const iframe = document.getElementById('tableauIframe');
-                const fallbackMessage = document.querySelector('.fallback-message');
-
-                iframe.addEventListener('error', () => {
-                    fallbackMessage.style.display = 'block';
-                });
-
-                // Fallback after timeout if load event doesn't fire
-                setTimeout(() => {
-                    if (!iframe.contentDocument || iframe.contentDocument.body.innerHTML === '') {
-                        fallbackMessage.style.display = 'block';
-                    }
-                }, 5000); // 5-second timeout
-            }, 1000);
+                if (!iframeLoaded) {
+                    fallback.style.display = 'block';
+                }
+            }, 5000);
         };
     </script>
 </body>

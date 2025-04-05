@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analytics Dashboard 📊✨</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 1.8em;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #fff, transparent);
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .tableau-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tableau-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #ff6b6b, #ffd700);
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .fallback-link {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-style: italic;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Data Analytics Hub 📈🚀</h1>
+            <p>Unleash the Power of Insights! 🌟</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview 🌍</a></li>
+                <li><a href="#tableau">Tableau Dashboards 📊</a></li>
+                <li><a href="#insights">Key Insights 💡</a></li>
+                <li><a href="#contact">Contact Us 📧</a></li>
+            </ul>
+        </nav>
+
+        <div class="section" id="overview">
+            <h2>Overview 🌍</h2>
+            <p>Welcome to our cutting-edge analytics platform! Dive into data-driven decisions with our interactive dashboards and visualizations. 📈✨</p>
+        </div>
+
+        <div class="section" id="tableau">
+            <h2>Interactive Tableau Dashboard 📊</h2>
+            <p>Explore this awesome Tableau visualization below! Zoom, filter, and interact to uncover trends. 🕵️‍♂️</p>
+            <div class="tableau-container" id="tableauContainer">
+                <!-- Updated Embed URL -->
+                <iframe 
+                    src="https://public.tableau.com/views/B4RSQRD6J/Dashboard1?:embed=y&:display_count=n&:origin=viz_share_link&:toolbar=yes&:tabs=no" 
+                    allowfullscreen 
+                    id="tableauIframe">
+                </iframe>
+            </div>
+            <p class="error-message" id="errorMessage">Oops! The dashboard didn’t load. Try <a href="https://public.tableau.com/shared/B4RSQRD6J?:display_count=n&:origin=viz_share_link" class="fallback-link" target="_blank">viewing it directly on Tableau Public</a>! 🌈</p>
+            <a href="#" class="explore-btn">Explore More Dashboards 🌈</a>
+        </div>
+
+        <div class="section" id="insights">
+            <h2>Key Insights 💡</h2>
+            <p>🔍 Discover trends, patterns, and actionable insights from our data analysis.</p>
+            <ul>
+                <li>📈 Sales increased by 25% QoQ</li>
+                <li>🌎 Top regions driving growth</li>
+                <li>🚀 Product performance metrics</li>
+            </ul>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>Contact Us 📧</h2>
+            <p>Have questions? Reach out at <a href="mailto:analytics@company.com">analytics@company.com</a>! 😊</p>
+        </div>
+
+        <footer>
+            <p>© 2025 Data Analytics Hub | Powered by xAI & Tableau 🌟</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Button Animation
+        const btn = document.querySelector('.explore-btn');
+        btn.addEventListener('mouseover', () => {
+            btn.style.background = 'linear-gradient(45deg, #ffd700, #ff6b6b)';
+        });
+        btn.addEventListener('mouseout', () => {
+            btn.style.background = 'linear-gradient(45deg, #ff6b6b, #ffd700)';
+        });
+
+        // Check if Tableau iframe loads
+        window.onload = () => {
+            setTimeout(() => {
+                alert('Welcome to the Data Analytics Hub! Enjoy exploring! 🎉');
+                const iframe = document.getElementById('tableauIframe');
+                const errorMessage = document.getElementById('errorMessage');
+                
+                iframe.addEventListener('load', () => {
+                    // Check if iframe content is blank
+                    if (!iframe.contentDocument || iframe.contentDocument.body.innerHTML === '') {
+                        errorMessage.style.display = 'block';
+                    }
+                });
+
+                // Fallback after timeout if load event doesn't fire
+                setTimeout(() => {
+                    if (!iframe.contentDocument || iframe.contentDocument.body.innerHTML === '') {
+                        errorMessage.style.display = 'block';
+                    }
+                }, 5000); // 5-second timeout
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

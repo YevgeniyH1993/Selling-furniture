@@ -1,50 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analytics Dashboard 📊✨</title>
+    <title>ניתוח נתונים מדהים 📊✨</title>
     <style>
-        body {
+        :root {
+            --primary-gradient: linear-gradient(45deg, #4facfe, #00f2fe);
+            --secondary-color: #f7f9fc;
+            --text-color: #333;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            min-height: 100vh;
-            color: #fff;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            background: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--primary-gradient);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            animation: slideIn 1s ease-out;
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px;
+            margin: 2rem auto;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
             animation: fadeIn 1s ease-in;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        header {
-            text-align: center;
-            padding: 30px 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            margin-bottom: 40px;
-            backdrop-filter: blur(5px);
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
         h2 {
-            color: #fff;
-            font-size: 1.8em;
-            margin: 20px 0;
+            color: #4facfe;
+            margin-bottom: 1rem;
             position: relative;
         }
 
@@ -52,190 +65,137 @@
             content: '';
             width: 50px;
             height: 3px;
-            background: linear-gradient(to right, #fff, transparent);
+            background: var(--primary-gradient);
             position: absolute;
             bottom: -5px;
-            left: 0;
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            transition: transform 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
+            right: 0;
         }
 
         .tableau-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background: #fff;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f0f8ff;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .tableau-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #ffd700;
-        }
-
-        .explore-btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: linear-gradient(45deg, #ff6b6b, #ffd700);
-            border-radius: 25px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
             transition: transform 0.3s ease;
         }
 
-        .explore-btn:hover {
-            transform: scale(1.05);
+        .tableau-container:hover {
+            transform: scale(1.02);
+        }
+
+        .insights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .insight-card {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            padding: 1rem;
+            color: #666;
         }
 
-        .fallback-message {
-            color: #ffd700;
-            font-style: italic;
-            margin-top: 10px;
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .fallback-link {
-            color: #ffd700;
-            text-decoration: underline;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>ברוכים הבאים לניתוח הנתונים שלנו! 📈🎉</h1>
+        <p>גלו תובנות מדהימות עם Tableau 🌟</p>
+    </header>
+
     <div class="container">
-        <header>
-            <h1>Data Analytics Hub 📈🚀</h1>
-            <p>Unleash the Power of Insights! 🌟</p>
-        </header>
-
-        <nav>
-            <ul>
-                <li><a href="#overview">Overview 🌍</a></li>
-                <li><a href="#tableau">Tableau Dashboards 📊</a></li>
-                <li><a href="#insights">Key Insights 💡</a></li>
-                <li><a href="#contact">Contact Us 📧</a></li>
-            </ul>
-        </nav>
-
-        <div class="section" id="overview">
-            <h2>Overview 🌍</h2>
-            <p>Welcome to our cutting-edge analytics platform! Dive into data-driven decisions with our interactive dashboards and visualizations. 📈✨</p>
+        <div class="section">
+            <h2>לוח הבקרה הראשי 📊</h2>
+            <div class="tableau-container">
+                <div class='tableauPlaceholder' id='viz1743921559937' style='position: relative'>
+                    <noscript>
+                        <a href='#'>
+                            <img alt='Dashboard 1 ' src='https://public.tableau.com/static/images/Se/Sellingfurniture2/Dashboard1/1_rss.png' style='border: none' />
+                        </a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='Sellingfurniture2/Dashboard1' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Se/Sellingfurniture2/Dashboard1/1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='en-US' />
+                        <param name='filter' value='publish=yes' />
+                    </object>
+                </div>
+            </div>
         </div>
 
-        <div class="section" id="tableau">
-    <h2>Interactive Tableau Dashboard 📊</h2>
-    <p>Explore this awesome Tableau visualization! Zoom, filter, and interact to uncover trends in furniture sales. 🕵️‍♂️</p>
-    <a href="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link" target="_blank" class="dashboard-btn">View Dashboard on Tableau Public 🌐</a>
-    <p style="margin-top: 10px;">Click the button above to access the interactive dashboard directly on Tableau Public! 🌈</p>
-    <a href="#" class="explore-btn">Explore More Dashboards 🌈</a>
-</div>
-            <p class="fallback-message">If the dashboard doesn’t load, <a href="https://public.tableau.com/views/Sellingfurniture/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" class="fallback-link" target="_blank">click here to view it directly on Tableau Public</a>! 🌈</p>
-            <a href="#" class="explore-btn">Explore More Dashboards 🌈</a>
+        <div class="section">
+            <h2>תובנות מרכזיות 🔍</h2>
+            <div class="insights">
+                <div class="insight-card">מכירות מובילות 🚀</div>
+                <div class="insight-card">טרנדים חמים 🔥</div>
+                <div class="insight-card">ביצועים מעולים 🌟</div>
+            </div>
         </div>
-
-        <div class="section" id="insights">
-            <h2>Key Insights 💡</h2>
-            <p>🔍 Discover trends, patterns, and actionable insights from our data analysis.</p>
-            <ul>
-                <li>📈 Sales increased by 25% QoQ</li>
-                <li>🌎 Top regions driving growth</li>
-                <li>🚀 Product performance metrics</li>
-            </ul>
-        </div>
-
-        <div class="section" id="contact">
-            <h2>Contact Us 📧</h2>
-            <p>Have questions? Reach out at <a href="mailto:analytics@company.com">analytics@company.com</a>! 😊</p>
-        </div>
-
-        <footer>
-            <p>© 2025 Data Analytics Hub | Powered by xAI & Tableau 🌟</p>
-        </footer>
     </div>
 
-    <script>
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = document.querySelector(this.getAttribute('href'));
-                section.scrollIntoView({ behavior: 'smooth' });
+    <footer>
+        <p>נבנה עם ❤️ על ידי צוות הנתונים שלנו | © 2025</p>
+    </footer>
+
+    <script type='text/javascript'>
+        var divElement = document.getElementById('viz1743921559937');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        if (divElement.offsetWidth > 800) {
+            vizElement.style.width = '100%';
+            vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+        } else if (divElement.offsetWidth > 500) {
+            vizElement.style.width = '100%';
+            vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+        } else {
+            vizElement.style.width = '100%';
+            vizElement.style.height = '1427px';
+        }
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+        // אנימציה קלה לכותרות
+        document.querySelectorAll('h2').forEach(h2 => {
+            h2.addEventListener('mouseover', () => {
+                h2.style.transform = 'scale(1.05)';
+            });
+            h2.addEventListener('mouseout', () => {
+                h2.style.transform = 'scale(1)';
             });
         });
-
-        const btn = document.querySelector('.explore-btn');
-        btn.addEventListener('mouseover', () => {
-            btn.style.background = 'linear-gradient(45deg, #ffd700, #ff6b6b)';
-        });
-        btn.addEventListener('mouseout', () => {
-            btn.style.background = 'linear-gradient(45deg, #ff6b6b, #ffd700)';
-        });
-
-        window.onload = () => {
-            setTimeout(() => {
-                alert('Welcome to the Data Analytics Hub! Enjoy exploring! 🎉');
-                const iframe = document.getElementById('tableauIframe');
-                const fallbackMessage = document.querySelector('.fallback-message');
-
-                iframe.addEventListener('error', () => {
-                    fallbackMessage.style.display = 'block';
-                });
-
-                setTimeout(() => {
-                    if (!iframe.contentDocument || iframe.contentDocument.body.innerHTML === '') {
-                        fallbackMessage.style.display = 'block';
-                    }
-                }, 5000);
-            }, 1000);
-        };
     </script>
 </body>
 </html>
